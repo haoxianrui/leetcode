@@ -25,6 +25,8 @@ package com.leetcode.greddyalgorithms;
 // Related Topics 堆 贪心算法 排序 字符串
 // 👍 146 👎 0
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class q767_重构字符串 {
@@ -37,7 +39,53 @@ public class q767_重构字符串 {
 
 
     public static String reorganizeString(String S) {
+        if (S.length() < 2) return S;
 
-        return null;
+        char[] chars = S.toCharArray();
+        int len = chars.length;
+
+        int[] counts = new int[26];
+        int maxCount = 0;
+
+        // 1. 字母出现次数不能超过 (len+1)/2
+        for (int i = 0; i < len; i++) {
+            char ch = chars[i];
+            counts[ch - 'a']++;
+            maxCount = Math.max(maxCount, counts[ch - 'a']);
+        }
+
+        if (maxCount > (len + 1) / 2) {
+            return "";
+        }
+
+        // 2. 出现的字母放入队列（出现次数倒序）
+        PriorityQueue<Character> queue = new PriorityQueue<>(Comparator.comparingInt(c -> counts[(char) c - 'a']).reversed()); //默认升序
+
+        for (char c = 'a'; c <= 'z'; c++) {
+            if (counts[c - 'a'] > 0) {
+                queue.offer(c);
+            }
+        }
+
+        // 3. 遍历队列依次拼接
+        StringBuilder sb = new StringBuilder();
+        while (queue.size() > 1) {
+            char c1 = queue.poll();
+            char c2 = queue.poll();
+            sb.append(c1).append(c2);
+
+            if (--counts[c1 - 'a'] > 0) {
+                queue.offer(c1);
+            }
+
+            if (--counts[c2 - 'a'] > 0) {
+                queue.offer(c2);
+            }
+        }
+
+        if (queue.size() > 0) {
+            sb.append(queue.poll());
+        }
+        return sb.toString();
     }
 }
