@@ -60,6 +60,11 @@ public class q3_无重复字符的最长子串 {
         System.out.println(s + "无重复字符的最长子串的长度是:" + lengthOfLongestSubstring(s));
     }
 
+    /**
+     *
+     * @param s  abcabcbb
+     * @return
+     */
     public static int lengthOfLongestSubstring(String s) {
         Set<Character> set = new HashSet<Character>();
         int max = 0, rk = -1, len = s.length();
