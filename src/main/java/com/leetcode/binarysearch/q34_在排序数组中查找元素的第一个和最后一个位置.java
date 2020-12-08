@@ -45,11 +45,61 @@ package com.leetcode.binarysearch;
 public class q34_在排序数组中查找元素的第一个和最后一个位置 {
 
     public static void main(String[] args) {
-
+        int[] nums = new int[]{5, 7, 7, 8, 8, 10};
+        int target = 8;
+        searchRange(nums, target);
     }
 
-    public int[] searchRange(int[] nums, int target) {
+    public static int[] searchRange(int[] nums, int target) {
 
-        return new int[]{-1, -1};
+        int len = nums.length;
+        if (len == 0) {
+            return new int[]{-1, -1};
+        }
+
+        int firstPosition = findFirstPosition(nums, target);
+        if (firstPosition == -1) {
+            return new int[]{-1, -1};
+        }
+        int lastPosition = findLastPosition(nums, target);
+        return new int[]{firstPosition, lastPosition};
+    }
+
+
+    private static int findFirstPosition(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+
+        // 有可能不存在
+        if (nums[left] == target) {
+            return left;
+        }
+        return -1;
+    }
+
+
+    private static int findLastPosition(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        while (left < right) {
+            int mid = (left + right + 1) / 2;
+            if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid;
+            }
+
+        }
+        return left;
     }
 }
