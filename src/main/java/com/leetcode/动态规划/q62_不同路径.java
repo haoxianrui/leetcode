@@ -53,11 +53,12 @@ package com.leetcode.动态规划;
 public class q62_不同路径 {
 
     public static void main(String[] args) {
-
+        int i = uniquePaths(3, 7);
+        System.out.println("不同路径：" + i);
     }
 
-    // 动态规划 确认边界条件
-    public int uniquePaths(int m, int n) {
+    // 动态规划 确认边界值
+    public static int uniquePaths(int m, int n) {
 
         int[][] f = new int[m][n];
 
@@ -74,6 +75,6 @@ public class q62_不同路径 {
                 f[i][j] = f[i - 1][j] + f[i][j - 1];
             }
         }
-        return f[m-1][n-1];
+        return f[m - 1][n - 1];
     }
 }
