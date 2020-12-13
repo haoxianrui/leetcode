@@ -1,4 +1,4 @@
-package com.leetcode.数据结构.数组;
+package com.leetcode.数据结构.哈希表;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.leetcode.数据结构.数组;
+package com.leetcode.数据结构.哈希表;
 
 //给定一个整数数组，判断是否存在重复元素。
 //
@@ -31,10 +31,12 @@ public class q217_存在重复元素 {
 
         int[] nums = new int[]{1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
 
+        boolean ans = containsDuplicate_哈希表(nums);
+
+        System.out.println("是否存在重复元素：" + ans);
 
     }
 
-    // 数组
     public static boolean containsDuplicate_数组(int[] nums) {
         int len = nums.length;
         for (int i = 0; i < len; i++) {
@@ -48,11 +50,11 @@ public class q217_存在重复元素 {
     }
 
     public static boolean containsDuplicate_哈希表(int[] nums) {
-        HashSet<Integer> set =new HashSet<>();
-        for (int i = 0; i <  nums.length; i++) {
-            if(set.contains(nums[i])){
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(nums[i])) {
                 return true;
-            }else{
+            } else {
                 set.add(nums[i]);
             }
         }
