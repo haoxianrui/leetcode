@@ -99,6 +99,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../leetcode/src/main/java/leetcode/editor/cn/MonotoneIncreasingDigits.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../../leetcode/src/main/java/leetcode/editor/cn/MonotoneIncreasingDigits.java" />
+              <option name="questionId" value="738" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
